@@ -17,4 +17,18 @@ services:
     restart: always
 
 
+  mysql:
+    image: mysql
+    container_name: ${APP_NAME}-mysql
+    volumes:
+      - ./mysql-db:/var/lib/mysql
+    depends_on:
+      - wordpress
+    environment:
+        MYSQL_ROOT_PASSWORD:  ${DB_ROOT_PASSWORD}
+        MYSQL_DATABSE:  ${DB_NAME}
+        MYSQL_USER: ${DB_USER}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
+    restart: always
+
   
